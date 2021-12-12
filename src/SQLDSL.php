@@ -13,7 +13,7 @@ final class SQLDSL {
 	
 	public static function num( int $n ) : AST {
 
-		return new AST( (string) $n, null, 0 );
+		return new NumLit( $n );
 	}
 
 	public static function str( string $s ) : AST {
