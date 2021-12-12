@@ -48,3 +48,9 @@ $conn = new mysqli( 'localhost', 'manager', 'password', 'information_schema' );
 $stmt = getCompiledSQL( $columns, $parameter )->run_mysqli( $conn );
 ```
 
+Differences with Java library
+=============================
+
+1. SQL libary: this PHP library uses, for this POC, the standard library `mysqli` and `mysqli_stmt` in CompiledStatement: methods `getPreparedStatement_mysqli` and `run_mysqli`. To avoid being library-specific, there is also the library-independent method `CompiledStatement::getPreparedStatement`.
+
+2. Types of arguments: `CompiledStatement` has a supplementary method `addParam` to append a non-string parameter (integer, double, blob), see [`mysqli_stmt_bin_param`](https://www.php.net/manual/en/mysqli-stmt.bind-param.php).
