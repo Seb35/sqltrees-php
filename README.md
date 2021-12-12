@@ -8,18 +8,18 @@ Example
 =======
 
 In the MySQL system database `information_schema`, take the following SQL request containing a parameter in the WHERE provided by the application to let the user jump at some point in the list:
-``lang=sql`
+```sql
 SELECT table_schema, table_name, engine, table_rows, create_time FROM tables WHERE table_name >= 'parameter' ORDER BY table_name, create_time LIMIT 0,10;
 ```
 
 In a trivial example like this one, the request can be rewritten as a parametrised request:
-```lang=sql
+```sql
 SELECT table_schema, table_name, engine, table_rows, create_time FROM tables WHERE table_name >= ? ORDER BY table_name, create_time LIMIT 0,10;
 -- with the parameters: ('parameter')
-``
+```
 
 But if now we want let the user choose the requested columns, we write in PHP:
-```lang=php
+```php
 function getParametrisedSQL( $columns, $parameter ) {
 	return [
 		'sql' => 'SELECT ' . implode( ', ', $columns ) . ' FROM tables WHERE tables_name >= ? ORDER BY table_name, create_time LIMIT 0,10;',
@@ -32,7 +32,7 @@ And now the name of the columns could introduce a SQL injection, if the columns 
 During an audit, all functions manipulating some parts of SQL requests must be carefully examinated to be sure no one has some escaping issues.
 
 **With this library**, the previous parametrised function would be rewritten like this:
-```lang=php
+```php
 use SQLTrees;
 
 function getCompiledSQL( $columns, $parameter ) : CompiledStatement {
