@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types=1 );
+
 use SQLTrees\SQLDSL;
 use SQLTrees\CompiledStatement;
 use function SQLTrees\{select,from,where,order_by,limit,tupleArray,tuple,eq,operator,andExpr,orExp,id,str,num};
