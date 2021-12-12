@@ -61,6 +61,36 @@ final class CompiledStatement {
 	 *   - array args: the parameters of the template SQL query,
 	 *   - array types: the types of the parameters.
 	 *
+	 * The returned array has two keys:
+	 *   - template: a string representing the template SQL query,
+	 *   - parameters: an array whose each value is [ (string) $type, (string) $arg ]:
+	 *       - type: is a letter in [ 's', 'i', 'd', 'b' ] for the type of the parameter,
+	 *       - arg: is a string for the parameter.
+	 *
+	 * @return array
+	 */
+	public function getPreparedStatement() : array {
+
+		$n = count( $this->args );
+		$parameters = [];
+		for( $i = 0; $i < $n; $i++ ) {
+			$parameters[] = [ $this->types[$i], $this->args[$i] ];
+		}
+
+		return [
+			'template' => $this->getTpl(),
+			'parameters' => $parameters,
+		];
+	}
+
+	/**
+	 * Get a (compiled) prepared statement.
+	 *
+	 * The prepared statement was compiled from AST with one string and two arrays:
+	 *   - string query: the template SQL query with ? as parameters,
+	 *   - array args: the parameters of the template SQL query,
+	 *   - array types: the types of the parameters.
+	 *
 	 * @param mysqli $con MySQL connection
 	 * @return mysqli_stmt MySQL prepared statement
 	 */
