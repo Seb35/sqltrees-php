@@ -1,7 +1,7 @@
 SQLTrees (php)
 ==============
 
-This is a PHP version of the Java library [SQLTrees](https://github.com/Orange-Cyberdefense/sqltrees) aiming at annihilating (possibility of) SQL injections and at the same time keeping the whole expressiveness of SQL. You can read (in French) [this introductory article](https://connect.ed-diamond.com/MISC/misc-111/zero-sqli-malgre-les-developpeurs), or read below a summary.
+This is a PHP version of the Java library [SQLTrees](https://github.com/Orange-Cyberdefense/sqltrees) aiming at annihilating (possibility of) SQL injections and at the same time keeping the whole expressiveness of SQL. You can read (in French) [this introductory article](https://connect.ed-diamond.com/MISC/misc-111/zero-sqli-malgre-les-developpeurs), check out [the example](https://githu.com/Seb35/sqltrees-php/tree/main/examples), or read below a summary.
 
 
 Example
